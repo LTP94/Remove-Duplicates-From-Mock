@@ -1,6 +1,10 @@
 # Remove Duplicates From Mock
 
-This application will 
+The application aims to eliminate duplicates that may exist in objects and scenes.
+
+Once the application is executed, a new file will be obtained with the name:
+
+clean_application.json
 
 ## Getting Started:
 
@@ -34,7 +38,7 @@ In the root directory run
 npm test
 ```
 
-Tests consist of unit tests on the main functions from utils/index.js using the test_mock_application.json file for test data.
+Tests consist of unit tests on the main functions from utils/index.js using the test_mock_application.json file for testing data.
 
 ## Built With
 
