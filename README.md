@@ -15,7 +15,7 @@ clean_application.json
 Clone this repo and cd into the root directory
 
 ```
-cd remove-duplicates-from-mock
+cd remove-duplicates-from-mock-main
 ```
 
 ```
