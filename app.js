@@ -11,9 +11,12 @@ try {
   console.log('Error:', e.stack);
 }
 
+// Remove duplicates from fields and views
 
 keepUniqueValues(data.versions[0].objects, 'fields', 'key', '_id');
 keepUniqueValues(data.versions[0].scenes, 'views', 'key', '_id');
+
+// Remove duplicates from objects and scenes
 
 data.versions[0].objects = keepUniqueValuesOneArr(data.versions[0].objects, 'key', '_id');
 data.versions[0].scenes = keepUniqueValuesOneArr(data.versions[0].scenes, 'key', '_id');
