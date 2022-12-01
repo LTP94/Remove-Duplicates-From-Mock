@@ -47,7 +47,6 @@
  * @returns {array} 
  */
   
-  
   const getMostRecent = (dataArr, key) => {
     return Object.values(dataArr.reduce((unique, obj) => {
       if (!unique[obj[key]]) {
@@ -84,7 +83,6 @@
  * @returns {object} 
  */
 
-
 const filterDataByMatchingKeys = (dataArr, matchingKeysToRemove) => {
     let toRemove = [];
     let newData = dataArr.slice();
@@ -99,7 +97,63 @@ const filterDataByMatchingKeys = (dataArr, matchingKeysToRemove) => {
       toRemove
     };
   }
+
+  /**
+ * 
+ * returns a sanitized array with unique values checked by the given keys
+ * 
+ * @param arr {array}  
+ * 
+ * @param firstKey {string} - first key that will be checked
+ * 
+ * @param secondKey {string} - second key that will be checked
+ * 
+ * @returns {object} 
+ */
   
+  const keepUniqueValuesOneArr = (arr , firstKey, secondKey) => {
+
+    const fieldsKeyDupes = getDuplicates(arr, firstKey);
+    const fieldsIDDupes = getDuplicates(arr, secondKey);
+
+    const fieldsKeyDuplicatesToKeep = getMostRecent(fieldsKeyDupes.dupes, firstKey);
+    const fieldsIDDuplicatesToKeep = getMostRecent(fieldsIDDupes.dupes, secondKey);
+
+    const finalDuplicatesToKeep = removeIdenticals(fieldsKeyDuplicatesToKeep, fieldsIDDuplicatesToKeep);
+
+    const matchingKeys = finalDuplicatesToKeep.map(item => {
+      return item.key
+    });
+    const matchingIds = finalDuplicatesToKeep.map(item => {
+      return item._id
+    });
+
+    const matchingKeysToRemove = [...matchingIds, ...matchingKeys];
+
+    console.log(matchingKeysToRemove);
+
+    const filteredData = filterDataByMatchingKeys(arr, matchingKeysToRemove);
+
+    const finalSanitizedArr = [...filteredData.newData, ...finalDuplicatesToKeep];
+
+   return finalSanitizedArr;
+
+  }
+
+  /**
+ * 
+ * sanitizes multiple arrays by a given object path.
+ * 
+ * @param arr {array}  
+ * 
+ *  @param path {string}  
+ * 
+ * @param firstKey {string} - first key that will be checked
+ * 
+ * @param secondKey {string} - second key that will be checked
+ * 
+ * @returns {object} 
+ */
 
   function keepUniqueValues(arr, path, firstKey, secondKey) {
     
@@ -132,38 +186,6 @@ const filterDataByMatchingKeys = (dataArr, matchingKeysToRemove) => {
   
     }
   }
-
-  function keepUniqueValuesOneArr(arr , firstKey, secondKey) {
-
-      const fieldsKeyDupes = getDuplicates(arr, firstKey);
-      const fieldsIDDupes = getDuplicates(arr, secondKey);
-  
-      const fieldsKeyDuplicatesToKeep = getMostRecent(fieldsKeyDupes.dupes, firstKey);
-      const fieldsIDDuplicatesToKeep = getMostRecent(fieldsIDDupes.dupes, secondKey);
-  
-      const finalDuplicatesToKeep = removeIdenticals(fieldsKeyDuplicatesToKeep, fieldsIDDuplicatesToKeep);
-  
-      const matchingKeys = finalDuplicatesToKeep.map(item => {
-        return item.key
-      });
-      const matchingIds = finalDuplicatesToKeep.map(item => {
-        return item._id
-      });
-  
-
-      const matchingKeysToRemove = [...matchingIds, ...matchingKeys];
-  
-      console.log(matchingKeysToRemove);
-
-      const filteredData = filterDataByMatchingKeys(arr, matchingKeysToRemove);
-
-      const finalSanitizedArr = [...filteredData.newData, ...finalDuplicatesToKeep];
-
-     return finalSanitizedArr;
-
-    }
-  
-
 
   module.exports = {
     getDuplicates,
