@@ -1167,6 +1167,32 @@
                                 "type" : "database"
                             },
                             "key" : "view_4"
+                        },                        {
+                            "columns" : [],
+                            "links" : [],
+                            "inputs" : [],
+                            "_id" : "61e86a411137bc002545ff0e",
+                            "name" : "Login Form",
+                            "title" : "Login",
+                            "type" : "login",
+                            "description" : "Enter your email address and password to login.",
+                            "limit_profile_access" : false,
+                            "allowed_profiles" : [],
+                            "registration_type" : "closed",
+                            "key" : "view_3"
+                        },                        {
+                            "columns" : [],
+                            "links" : [],
+                            "inputs" : [],
+                            "_id" : "61e86a411137bc002545ff0e",
+                            "name" : "Login Form",
+                            "title" : "Login",
+                            "type" : "login",
+                            "description" : "Enter your email address and password to login.",
+                            "limit_profile_access" : false,
+                            "allowed_profiles" : [],
+                            "registration_type" : "closed",
+                            "key" : "view_3"
                         }
                     ],
                     "parent" : "home-login"
