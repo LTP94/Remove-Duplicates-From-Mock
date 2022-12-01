@@ -22,7 +22,7 @@ cd remove-duplicates-from-mock-main
 npm install
 ```
 
-In the terminal, you can now remove duplicates from a json file, given a Kanck application format.
+In the terminal, you can now remove duplicates from a json file, given a Knack application format.
 
 Run the following to output the new file file:
 
